@@ -48,27 +48,26 @@ public class SetCalculatorBuilder {
         return this;
     }
 
-    private Set reduce(Deque<SetNode> selectionList) {
+    private Set reduce(Deque<SetNode> nodeList) {
 
-        // Remove the first selection from selection list
-        SetNode left = selectionList.pollFirst();
+        SetNode left = nodeList.pollFirst();
 
-        // reducedSet will hold either the product of the adjastent higher levels selections 
-        // or the next selection if it is on same level 
+        // reducedSet will hold either the calculation of the adjacent higher levels nodes 
+        // or the next node if it is on same level 
         Set reducedSet;
-        if (left.getLevel() < selectionList.getFirst().getLevel()) {
-            reducedSet = reduce(selectionList);
+        if (left.getLevel() < nodeList.getFirst().getLevel()) {
+            reducedSet = reduce(nodeList);
         } else {
-            reducedSet = selectionList.getFirst().getNodeSet();
+            reducedSet = nodeList.getFirst().getNodeSet();
         }
 
         // Join left set with reducedSet
-        Set iset = OperatorHandler.calculateSets(left.getNodeSet(), reducedSet, left.getOperator());
+        Set outcomeSet = OperatorHandler.calculateSets(left.getNodeSet(), reducedSet, left.getOperator());
 
-        //  ... and the outcome store it on the first selection of the list
-        selectionList.getFirst().setNodeSet(iset);
+        //  ... and the outcome store it on the first node of the list
+        nodeList.getFirst().setNodeSet(outcomeSet);
 
-        return iset;
+        return outcomeSet;
 
     }
 
