@@ -74,9 +74,7 @@ public class SetCalculatorBuilderTest {
             randomNumber = ran.nextInt(RANDOM_RANGE) + 1;
             set3.add(randomNumber);
         }
-        
-        System.out.println("S1: " + String.valueOf(set1.size()) + " S2: " + String.valueOf(set2.size())+ " S3: " + String.valueOf(set3.size()));
-        
+
         // Start benchmarking ...
         long startTime = System.currentTimeMillis();
         
@@ -92,7 +90,7 @@ public class SetCalculatorBuilderTest {
         long estimatedTime = System.currentTimeMillis() - startTime;
         
         
-        System.out.println("Last set size is: " + String.valueOf(lastSet.size()) + " time elapsed: " + String.valueOf(estimatedTime));
+        Assert.assertTrue(estimatedTime < 1_000);
 
     }
 }
