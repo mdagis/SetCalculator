@@ -12,7 +12,7 @@ public class OperatorHandler {
                 return orOperator(set1, set2);
             case NOT_IN:
                 return notInOperator(set1, set2);
-            // If case an invalid operator is passed return the left operant.
+            // In case an invalid operator is passed return the left operant.
             default:
                 return set1;
         }
