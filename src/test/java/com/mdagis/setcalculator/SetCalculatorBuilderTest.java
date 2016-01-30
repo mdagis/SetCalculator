@@ -47,11 +47,11 @@ public class SetCalculatorBuilderTest {
                 .addSet(set4).level(1)
                 .calculate();
 
-        Set expextedSet = new HashSet<>();
-        expextedSet.add(3);
-        expextedSet.add(7);
+        Set expectedSet = new HashSet<>();
+        expectedSet.add(3);
+        expectedSet.add(7);
 
-        Assert.assertEquals(expextedSet, lastSet);
+        Assert.assertEquals(expectedSet, lastSet);
     }
 
     @Test
