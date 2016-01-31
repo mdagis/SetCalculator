@@ -25,9 +25,9 @@ public class SetCalculatorBuilder implements SetNodeCollection, SetNodeOperand{
         
         int defaultLevel = setNodeList.isEmpty()? 0 : setNodeList.peekLast().getLevel();
         
-        SetNode sl1 = new SetNode();
-        sl1.setNodeSet(s);
-        setNodeList.add(sl1);
+        SetNode addedSetNode = new SetNode();
+        addedSetNode.setNodeSet(s);
+        setNodeList.add(addedSetNode);
         setNodeList.getLast().setLevel(defaultLevel);
         
         return (T) this;
