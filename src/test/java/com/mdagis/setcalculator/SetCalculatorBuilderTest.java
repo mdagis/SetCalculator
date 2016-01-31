@@ -80,11 +80,11 @@ public class SetCalculatorBuilderTest {
         
         SetCalculatorBuilder setBuilder = new SetCalculatorBuilder();
         Set lastSet = setBuilder
-                .addSet(set1).level(0)
+                .addSet(set1)
                 .and()
-                .addSet(set2).level(0)
+                .addSet(set2)
                 .notIn()
-                .addSet(set3).level(0)
+                .addSet(set3)
                 .calculate();
         
         long estimatedTime = System.currentTimeMillis() - startTime;

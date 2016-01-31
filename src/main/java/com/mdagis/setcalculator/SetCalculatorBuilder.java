@@ -20,10 +20,14 @@ public class SetCalculatorBuilder {
     }
 
     public SetCalculatorBuilder addSet(Set s) {
-
+        
+        int defaultLevel = setNodeList.isEmpty()? 0 : setNodeList.peekLast().getLevel();
+        
         SetNode sl1 = new SetNode();
         sl1.setNodeSet(s);
         setNodeList.add(sl1);
+        setNodeList.getLast().setLevel(defaultLevel);
+        
         return this;
 
     }
