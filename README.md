@@ -6,10 +6,15 @@ using operators like intersect, union, difference and also using nested parenthe
 ## Example
 
 Suppose that you have 4 sets s1, s2, s3, s4.
+
 s1 represents all women in a room.
+
 s2 represents all people in room with age 30
+
 s3 represents all people in room with age 35
+
 s4 represents all people in room that have birthday today
+
 
 If we want to get all women in that room that have age 30 or 35 but don’t have birthday today we would do a calculation like:
 
