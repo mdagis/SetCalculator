@@ -5,13 +5,14 @@ import java.util.Deque;
 import java.util.Set;
 
 
-public class SetCalculatorBuilder {
+public class SetCalculatorBuilder implements SetNodeCollection, SetNodeOperand{
 
     private final Deque<SetNode> setNodeList = new ArrayDeque<>();
 
     public SetCalculatorBuilder() {
     }
 
+    @Override
     public Set calculate() {
         while (setNodeList.size() > 1) {
             reduce(setNodeList);
@@ -19,7 +20,8 @@ public class SetCalculatorBuilder {
         return setNodeList.getFirst().getNodeSet();
     }
 
-    public SetCalculatorBuilder addSet(Set s) {
+    @Override
+    public <T extends SetNodeCollection> T addSet(Set s) {
         
         int defaultLevel = setNodeList.isEmpty()? 0 : setNodeList.peekLast().getLevel();
         
@@ -28,28 +30,32 @@ public class SetCalculatorBuilder {
         setNodeList.add(sl1);
         setNodeList.getLast().setLevel(defaultLevel);
         
-        return this;
+        return (T) this;
 
     }
 
+    @Override
     public SetCalculatorBuilder level(int setLevel) {
         setNodeList.getLast().setLevel(setLevel);
         return this;
     }
 
-    public SetCalculatorBuilder and() {
+    @Override
+    public <T extends SetNodeOperand> T  and() {
         setNodeList.getLast().setOperator(SetCalculateOperators.AND);
-        return this;
+        return  (T) this;
     }
 
-    public SetCalculatorBuilder or() {
+    @Override
+    public <T extends SetNodeOperand> T  or() {
         setNodeList.getLast().setOperator(SetCalculateOperators.OR);
-        return this;
+        return (T) this;
     }
     
-    public SetCalculatorBuilder notIn() {
+    @Override
+    public <T extends SetNodeOperand> T  notIn() {
         setNodeList.getLast().setOperator(SetCalculateOperators.NOT_IN);
-        return this;
+        return (T)  this;
     }
 
     private Set reduce(Deque<SetNode> nodeList) {
@@ -74,5 +80,7 @@ public class SetCalculatorBuilder {
         return outcomeSet;
 
     }
+
+
 
 }
